@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './dashboard/card/card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TimeDisplayPipe } from './pipe/time-display.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { PopUpCardComponent } from './dashboard/pop-up-card/pop-up-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    DashboardComponent
+    DashboardComponent,
+    TimeDisplayPipe,
+    PopUpCardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

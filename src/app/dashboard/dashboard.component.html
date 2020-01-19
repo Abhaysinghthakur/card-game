@@ -1,5 +1,29 @@
 <div class="dashboard">
   <div class="card-container">
+    <div class="control-panel">
+      <div class="timer align">
+        {{time | timeDisplay}}
+      </div>
+      <div class="startButton align">
+        <button class="btn" (click)="startGame()"
+          [ngClass]="{'btn-secondary':gameOnGoing,'btn-primary':!gameOnGoing }">Start
+          Game</button>
+      </div>
+      <div class="difficulty align">
+        <div class="text">Difficulty : </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn" (click)="changeDifficulty(0)" [disabled]="gameOnGoing"
+            [ngClass]="{'btn-secondary':difficulty !== 0,'btn-primary':difficulty === 0 }">Easy</button>
+          <button type="button" class="btn" (click)="changeDifficulty(1)" [disabled]="gameOnGoing"
+            [ngClass]="{'btn-secondary':difficulty !== 1,'btn-primary':difficulty === 1 }">Medium</button>
+          <button type="button" class="btn" (click)="changeDifficulty(2)" [disabled]="gameOnGoing"
+            [ngClass]="{'btn-secondary':difficulty !== 2,'btn-primary':difficulty === 2 }">Hard</button>
+        </div>
+      </div>
+      <div class="stats align">
+        <button class="btn btn-info" title="cool stats">Stats</button>
+      </div>
+    </div>
     <div class="row" *ngFor="let cardsRow of noOfRows; let i = index">
       <div class="cards" *ngFor="let card of noOfRows; let j = index">
         <app-card [index]="i*4 + j" [rand]="this.rand" [id]="this.cardsId[i*4 + j]"
@@ -8,3 +32,5 @@
     </div>
   </div>
 </div>
+
+<app-pop-up-card [totalTime]='totalTimeCounter' (resetState)='resetGame()' *ngIf='showPopUp'></app-pop-up-card>

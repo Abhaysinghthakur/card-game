@@ -10,14 +10,70 @@
   background: linear-gradient(135deg, #5BC8BA, #A281C8);
   border-radius: 10px;
   box-shadow: 7px 7px 10px #aaaaaa;
+  padding: 15px;
 }
 
 .cards {
   margin: 5px;
+  min-width: 150px;
+  min-height: 150px;
+  height: 100%;
+  width: auto;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin: 0px !important;
+}
+
+.control-panel {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: linear-gradient(-45deg, #5BC8BA, #A281C8);
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 4px;
+  margin: 0 25% 15px;
+}
+
+.difficulty {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+.text {
+  align-self: center;
+  font-size: 1.2rem;
+}
+
+.timer {
+  background: white;
+  height: 100%;
+  border: 1px solid black;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.align {
+  margin: 0 10px;
+}
+
+.btn-group {
+  margin: 0 0 0 3px;
+}
+
+.stats-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.stats {
+  display: flex;
+  align-self: center;
 }
