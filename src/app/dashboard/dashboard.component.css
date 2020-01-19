@@ -14,7 +14,7 @@
 }
 
 .cards {
-  margin: 5px;
+  margin: 5px 15px;
   min-width: 150px;
   min-height: 150px;
   height: 100%;
@@ -24,7 +24,7 @@
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 0px !important;
 }
 
