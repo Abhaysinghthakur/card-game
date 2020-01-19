@@ -3,10 +3,22 @@
   min-height: 150px;
   width: 20%;
   height: 100%;
-  background: #313D48;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 3px 3px 10px #aaaaaa;
+  border-radius: 5px;
+}
+
+.dark-background {
+  background: #313D48;
+}
+
+.choosen-background {
+  background: #5BC9BA;
+}
+
+.card-image {
+  max-width: 100%;
   border-radius: 5px;
 }

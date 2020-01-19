@@ -14,7 +14,12 @@ export class DashboardComponent implements OnInit {
   public cardsId = [];
   public cardsNotInitialized = [];
   public inGame = true;
+  public isChoosen = -1;
+  public previousIndex = -1;
+  public isSelected = false;
+  public rand = Math.round(Math.random() * 100);
 
+  // tslint:disable-next-line: variable-name
   constructor(public _state: StateService) { }
 
   ngOnInit() {
@@ -31,7 +36,7 @@ export class DashboardComponent implements OnInit {
       if (this.cardsId[i] === -1) {
         this.findPair(i);
       }
-      if (this.cardsId.length - 1 === i) {
+      if (this.cardsId.length === i + 1) {
         console.log(this.cardsId);
       }
     }
@@ -46,7 +51,28 @@ export class DashboardComponent implements OnInit {
   }
 
   cardChoosen(data) {
-    console.log(data);
+    if (this.isChoosen === -1) {
+      this.cardsState[data.index] = 1;
+      this.isChoosen = data.id;
+      this.previousIndex = data.index;
+    } else if (this.previousIndex !== data.index && !this.isSelected) {
+      if (this.isChoosen !== data.id) {
+        this.cardsState[data.index] = 1;
+        this.isSelected = true;
+        setTimeout(() => {
+          this.cardsState[data.index] = 0;
+          this.cardsState[this.previousIndex] = 0;
+          this.previousIndex = -1;
+          this.isChoosen = -1;
+          this.isSelected = false;
+        }, 1000);
+      } else {
+        this.cardsState[data.index] = 1;
+        this.isSelected = false;
+        this.previousIndex = -1;
+        this.isChoosen = -1;
+      }
+    }
   }
 
 }

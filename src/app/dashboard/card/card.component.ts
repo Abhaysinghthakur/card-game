@@ -9,6 +9,7 @@ export class CardComponent implements OnInit {
 
   @Input() id;
   @Input() index;
+  @Input() rand;
   @Input() cardClass;
   @Output() cardChooosen: EventEmitter<any> = new EventEmitter<any>();
 

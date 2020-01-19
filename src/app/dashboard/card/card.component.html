@@ -1,3 +1,5 @@
-<div class="card-container" (click)="cardClicked()">
-  <!-- <img src="../../../assets/"> -->
+<div class="card-container" (click)="cardClicked()"
+  [ngClass]="{'choosen-background' : cardClass === 1,'dark-background' : cardClass === 0}">
+  <img class="card-image" [src]="'https://picsum.photos/id/'+ (this.id + this.rand) +'/150/150'"
+    [ngStyle]="{'display': cardClass === 1 ? 'block' : 'none'}">
 </div>
