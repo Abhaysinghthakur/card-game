@@ -1,0 +1,23 @@
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+  padding: 1% 2%;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #5BC8BA, #A281C8);
+  border-radius: 10px;
+  box-shadow: 7px 7px 10px #aaaaaa;
+}
+
+.cards {
+  margin: 5px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

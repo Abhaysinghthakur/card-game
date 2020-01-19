@@ -1,0 +1,10 @@
+<div class="dashboard">
+  <div class="card-container">
+    <div class="row" *ngFor="let cardsRow of noOfRows; let i = index">
+      <div class="cards" *ngFor="let card of noOfRows; let j = index">
+        <app-card [index]="i*4 + j" [id]="this.cardsId[i*4 + j]" [cardClass]="this.cardsState[i*4 + j]"
+          (cardChooosen)="cardChoosen($event)"></app-card>
+      </div>
+    </div>
+  </div>
+</div>
