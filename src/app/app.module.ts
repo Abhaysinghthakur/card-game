@@ -9,6 +9,7 @@ import { TimeDisplayPipe } from './pipe/time-display.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { PopUpCardComponent } from './dashboard/pop-up-card/pop-up-card.component';
+import { StatsComponent } from './dashboard/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PopUpCardComponent } from './dashboard/pop-up-card/pop-up-card.componen
     CardComponent,
     DashboardComponent,
     TimeDisplayPipe,
-    PopUpCardComponent
+    PopUpCardComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,8 @@ export class DashboardComponent implements OnInit {
   public totalTimeInterval: any;
   public gameTimeout: any;
   public showPopUp = false;
+  public won = null;
+  public showStat = false;
 
   // tslint:disable-next-line: variable-name
   constructor(public _state: StateService, public _toastr: ToastrService) { }
@@ -37,7 +39,7 @@ export class DashboardComponent implements OnInit {
   }
 
   initState() {
-    this.rand = Math.round(Math.random() * 1000);
+    this.rand = Math.round(Math.random() * 100);
     this.cardsId = Array(this._state.noOfRows * this._state.noOfRows).fill(-1);
     this.cardsState = Array(this._state.noOfRows * this._state.noOfRows).fill(0);
     this.cardsNotInitialized = Array(this._state.noOfRows * this._state.noOfRows).fill(0).map((x, i) => i);
@@ -82,10 +84,7 @@ export class DashboardComponent implements OnInit {
         } else {
           this.gameState.splice(this.gameState.indexOf(data.id), 1);
           if (this.gameState.length === 0) {
-            this.gameOnGoing = false;
-            clearInterval(this.totalTimeInterval);
-            clearTimeout(this.gameTimeout);
-            this.showPopUp = true;
+            this.wonTheGame();
           }
           this.cardsState[data.index] = 1;
           this.isSelected = false;
@@ -108,20 +107,55 @@ export class DashboardComponent implements OnInit {
       this.time = this._state.allowedTime[this.difficulty];
       this.totalTimeInterval = setInterval(() => {
         this.totalTimeCounter++;
-        this.time--;
+        if (this.time > 0) {
+          this.time--;
+        }
       }, 1000);
       this.gameTimeout = setTimeout(() => {
-        this.showPopUp = true;
-      }, this.time);
-      this._toastr.success('Your Game has started');
+        this.lostTheGame();
+      }, this._state.allowedTime[this.difficulty] * 1000);
+
+      this._toastr.success('You have ' + this._state.allowedTime[this.difficulty] + ' seconds to complete this level',
+        'Game has started');
     }
     this.gameOnGoing = true;
   }
 
   resetGame() {
+    this.won = null;
     this.showPopUp = false;
+    this.time = 0;
+    this.totalTimeCounter = 0;
     this.gameState = [];
     this.initState();
   }
 
+  wonTheGame() {
+    this.won = true;
+    this.gameOnGoing = false;
+    clearInterval(this.totalTimeInterval);
+    clearTimeout(this.gameTimeout);
+    this.showPopUp = true;
+    this._state.timesPlayed[this.difficulty]++;
+    this._state.timesWon[this.difficulty]++;
+    if (this._state.bestTime[this.difficulty] === -1 || this.totalTimeCounter < this._state.bestTime[this.difficulty]) {
+      this._state.bestTime[this.difficulty] = this.totalTimeCounter;
+    }
+  }
+
+  lostTheGame() {
+    this.won = false;
+    this.gameOnGoing = false;
+    clearInterval(this.totalTimeInterval);
+    this.showPopUp = true;
+    this._state.timesPlayed[this.difficulty]++;
+  }
+
+  showStats() {
+    this.showStat = true;
+  }
+
+  closeStats() {
+    this.showStat = false;
+  }
 }

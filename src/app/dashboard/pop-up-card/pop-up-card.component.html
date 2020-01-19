@@ -1,8 +1,12 @@
 <div class="component">
   <div class="pop-up">
-    <div class="heading">
+    <div class="heading" *ngIf='won'>
       <h3>Congrats!!!</h3>
       You have completed this level in {{totalTime | timeDisplay}}
+    </div>
+    <div class="heading" *ngIf='!won'>
+      <h3>oh Snap!!!</h3>
+      You have lost this level
     </div>
     <div class="buttons-container">
       <button class="btn btn-primary" (click)='okay()'>Go Back</button>

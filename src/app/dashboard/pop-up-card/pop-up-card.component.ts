@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PopUpCardComponent implements OnInit {
 
   @Input() totalTime;
+  @Input() won;
   @Output() resetState: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }

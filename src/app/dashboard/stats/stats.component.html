@@ -1,0 +1,42 @@
+<div class="component">
+  <div class="pop-up">
+    <div class="heading">
+      <h3>Stats</h3>
+    </div>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Games Played</th>
+            <th scope="col">Games Won</th>
+            <th scope="col">Best Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Easy</th>
+            <td>{{this._state.timesPlayed[0]}}</td>
+            <td>{{this._state.timesWon[0]}}</td>
+            <td>{{this._state.bestTime[0] === -1 ? '--' : this._state.bestTime[0] | timeDisplay}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Medium</th>
+            <td>{{this._state.timesPlayed[1]}}</td>
+            <td>{{this._state.timesWon[1]}}</td>
+            <td>{{this._state.bestTime[1] === -1 ? '--' : this._state.bestTime[1] | timeDisplay}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Hard</th>
+            <td>{{this._state.timesPlayed[2]}}</td>
+            <td>{{this._state.timesWon[2]}}</td>
+            <td>{{this._state.bestTime[2] === -1 ? '--' : this._state.bestTime[2] | timeDisplay}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="buttons-container">
+      <button class="btn btn-primary" (click)="close()">Go Back</button>
+    </div>
+  </div>
+</div>

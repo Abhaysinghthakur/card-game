@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="stats align">
-        <button class="btn btn-info" title="cool stats">Stats</button>
+        <button class="btn btn-info" title="cool stats" (click)="showStats()" [disabled]="gameOnGoing">Stats</button>
       </div>
     </div>
     <div class="row" *ngFor="let cardsRow of noOfRows; let i = index">
@@ -33,4 +33,7 @@
   </div>
 </div>
 
-<app-pop-up-card [totalTime]='totalTimeCounter' (resetState)='resetGame()' *ngIf='showPopUp'></app-pop-up-card>
+<app-pop-up-card [totalTime]='totalTimeCounter' [won]="won" (resetState)='resetGame()' *ngIf='showPopUp'>
+</app-pop-up-card>
+
+<app-stats (closeStats)="closeStats()" *ngIf='showStat'></app-stats>
